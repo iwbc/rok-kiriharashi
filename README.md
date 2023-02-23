@@ -5,7 +5,7 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
 ### 動作環境
 
 - Windows 10-11
-- NoxPlayer 7
+- NoxPlayer 7 または BlueStacks 5
 
 ### セットアップ
 
@@ -13,10 +13,21 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
 
 [kiriharashi.exe](https://github.com/iwbc/rok-kiriharashi/releases/download/1.0.0/kiriharashi.exe)
 
-#### NoxPlayerとライキンの設定
+#### NoxPlayer（BlueStacks）とライキンの設定
 
-NoxPlayerの設定は、パフォーマンス「高い（4コアCPU、4096MBメモリ）」、解像度「1600x900」にし、ライキンは、画質「中」、フレームレート「至高」にします。  
-ライキンの言語は日本語にします。日本語以外では動作しません。
+##### NoxPlayer（BlueStacks）の設定
+
+- パフォーマンス
+  - CPU：4コア
+  - メモリ：4GB（4096MB）
+- 解像度：1600x900
+- 画素密度：240DPI（BlueStacksのみ）
+
+##### ライキンの設定
+
+- 画質：中
+- フレームレート：至高
+- 言語：日本語
 
 ### 使い方
 

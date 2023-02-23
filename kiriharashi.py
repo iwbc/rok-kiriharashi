@@ -4,20 +4,17 @@ import os
 import sys
 from android_auto_play_opencv import AapoManager
 
-# Nox adbパス
-ADB_PATH = "C:/Program Files/Nox/bin/"
+INCLUDES_DIR_PATH = os.path.join(os.path.dirname(__file__), "includes") + "/"
 
 # 斥候キャンプタップ位置
 SCOUT_CAMP_TAP_POS = (800, 450)
 
 aapo = None
-template_dir_path = None
-
 
 def main():
-    global aapo, template_dir_path
+    global aapo
 
-    aapo = AapoManager(ADB_PATH)
+    aapo = AapoManager(INCLUDES_DIR_PATH)
     devices = aapo.adbl.devices
 
     for i, device in enumerate(devices):
@@ -26,14 +23,12 @@ def main():
         print(f"{i + 1}: {device}")
 
     try:
-        deviceNo = int(input("\n操作するNoxPlayerの番号を入力してください: "))
+        deviceNo = int(input("\n操作するエミュレーターの番号を入力してください: "))
         device = devices[deviceNo - 1]
         aapo.adbl.setdevice(device)
     except:
         print("無効な入力値です。処理を中止します。")
         sys.exit(1)
-
-    template_dir_path = os.path.join(os.path.dirname(__file__), "templates")
 
     print(f"\n===== 探索開始（CTRL+Cで終了） =====\n")
 
@@ -43,12 +38,12 @@ def main():
 def auto_fog():
     while True:
         print(f"\n===== 派遣可能になるまで待機 =====\n")
-        checkImg(os.path.join(template_dir_path, "scout_explore.png"), infinite=True)
+        checkImg(os.path.join(INCLUDES_DIR_PATH, "scout_explore.png"), infinite=True)
         aapo.sleep(3)
 
         print(f"\n===== 霧選択 =====\n")
         try:
-            checkImg(os.path.join(template_dir_path, "scout_explore.png"))
+            checkImg(os.path.join(INCLUDES_DIR_PATH, "scout_explore.png"))
         except TimeoutError:
             goToScoutCamp()
             aapo.sleep(1)
@@ -57,7 +52,7 @@ def auto_fog():
 
         print(f"\n===== 斥候派遣 =====\n")
         try:
-            checkImg(os.path.join(template_dir_path, "scout_send.png"))
+            checkImg(os.path.join(INCLUDES_DIR_PATH, "scout_send.png"))
         except TimeoutError:
             goToScoutCamp()
             aapo.sleep(1)
@@ -69,12 +64,12 @@ def auto_fog():
 
 def goToScoutCamp():
     print(f"\n===== 都市に戻る =====\n")
-    checkImg(os.path.join(template_dir_path, "home.png"))
+    checkImg(os.path.join(INCLUDES_DIR_PATH, "home.png"))
     aapo.sleep(5)
     print(f"\n===== 斥候キャンプ =====\n")
     aapo.touchPos(SCOUT_CAMP_TAP_POS[0], SCOUT_CAMP_TAP_POS[1])
     aapo.sleep(1)
-    checkImg(os.path.join(template_dir_path, "scout.png"))
+    checkImg(os.path.join(INCLUDES_DIR_PATH, "scout.png"))
 
 
 def checkImg(
