@@ -22,6 +22,7 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
   - メモリ：4GB（4096MB）
 - 解像度：1600x900
 - 画素密度：240DPI（BlueStacksのみ）
+- 上位設定の`Android Debug Bridge`を有効化（BlueStacksのみ）
 
 ##### ライキンの設定
 
