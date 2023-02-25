@@ -5,7 +5,7 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
 ### 動作環境
 
 - Windows 10-11
-- NoxPlayer 7 または BlueStacks 5
+- BlueStacks 5 or NoxPlayer 7
 
 ### セットアップ
 
@@ -32,5 +32,6 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
 
 ### 使い方
 
-斥候キャンプを都市の真ん中に配置し、斥候管理画面を開いた状態でkiriharashi.exeを実行します。
-
+斥候キャンプを都市の真ん中に配置してください。  
+斥候管理画面を開いた状態でkiriharashi.exeを実行し、自動操作したいエミュレーターの番号を入力します。  
+※ BlueStacksの場合、起動後にBOTがエミュレーターを検出できるようになるまで少し時間がかかります。
