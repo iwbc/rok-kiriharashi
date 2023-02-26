@@ -11,6 +11,7 @@ SCOUT_CAMP_TAP_POS = (800, 450)
 
 aapo = None
 
+
 def main():
     global aapo
 
@@ -32,21 +33,29 @@ def main():
 
     print(f"\n===== 探索開始（CTRL+Cで終了） =====\n")
 
-    auto_fog()
+    kiriharashi()
 
 
-def auto_fog():
+def kiriharashi():
     while True:
         print(f"\n===== 派遣可能になるまで待機 =====\n")
-        checkImg(os.path.join(INCLUDES_DIR_PATH, "scout_explore.png"), infinite=True)
-        aapo.sleep(3)
+        try:
+            checkImg(
+                os.path.join(INCLUDES_DIR_PATH, "scout_explore.png"), infinite=True
+            )
+            aapo.sleep(3)
+        except AppRestarted:
+            openScoutCamp()
+            continue
 
         print(f"\n===== 霧選択 =====\n")
         try:
             checkImg(os.path.join(INCLUDES_DIR_PATH, "scout_explore.png"))
         except TimeoutError:
-            goToScoutCamp()
-            aapo.sleep(1)
+            backHome()
+            continue
+        except AppRestarted:
+            openScoutCamp()
             continue
         aapo.sleep(1)
 
@@ -54,22 +63,29 @@ def auto_fog():
         try:
             checkImg(os.path.join(INCLUDES_DIR_PATH, "scout_send.png"))
         except TimeoutError:
-            goToScoutCamp()
-            aapo.sleep(1)
+            backHome()
             continue
-            
+        except AppRestarted:
+            openScoutCamp()
+            continue
+
         aapo.sleep(1)
-        goToScoutCamp()
+        backHome()
 
 
-def goToScoutCamp():
+def backHome():
     print(f"\n===== 都市に戻る =====\n")
     checkImg(os.path.join(INCLUDES_DIR_PATH, "home.png"))
     aapo.sleep(5)
+    openScoutCamp()
+
+
+def openScoutCamp():
     print(f"\n===== 斥候キャンプ =====\n")
     aapo.touchPos(SCOUT_CAMP_TAP_POS[0], SCOUT_CAMP_TAP_POS[1])
     aapo.sleep(1)
     checkImg(os.path.join(INCLUDES_DIR_PATH, "scout.png"))
+    aapo.sleep(1)
 
 
 def checkImg(
@@ -87,11 +103,24 @@ def checkImg(
                 aapo.sleep(1)
                 aapo.touchPos(x, y)
             break
-        elif timer >= 9 and not infinite:
-            raise TimeoutError
+        elif timer >= 9:
+            icon_bs = os.path.join(INCLUDES_DIR_PATH, "icon_bs.png")
+            icon_nox = os.path.join(INCLUDES_DIR_PATH, "icon_nox.png")
+            if aapo.touchImg(icon_bs):
+                aapo.sleep(60)
+                raise AppRestarted
+            elif aapo.touchImg(icon_nox):
+                aapo.sleep(60)
+                raise AppRestarted
+            elif not infinite:
+                raise TimeoutError
         else:
             timer += 1
             aapo.sleep(1)
+
+
+class AppRestarted(Exception):
+    pass
 
 
 if __name__ == "__main__":

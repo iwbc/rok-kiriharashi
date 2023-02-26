@@ -15,7 +15,7 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
 
 #### NoxPlayer（BlueStacks）とライキンの設定
 
-##### NoxPlayer（BlueStacks）の設定
+##### BlueStacks（NoxPlayer）の設定
 
 - パフォーマンス
   - CPU：4コア
