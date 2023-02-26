@@ -4,7 +4,8 @@ import os
 import sys
 from android_auto_play_opencv import AapoManager
 
-INCLUDES_DIR_PATH = os.path.join(os.path.dirname(__file__), "includes") + "/"
+INCLUDES_DIR_PATH = os.path.join(os.path.dirname(__file__), "includes", "")
+ADB_DIR_PATH = os.path.join(os.path.dirname(__file__), "bin", "")
 
 # 斥候キャンプタップ位置
 SCOUT_CAMP_TAP_POS = (800, 450)
@@ -15,7 +16,7 @@ aapo = None
 def main():
     global aapo
 
-    aapo = AapoManager(INCLUDES_DIR_PATH)
+    aapo = AapoManager(ADB_DIR_PATH)
     devices = aapo.adbl.devices
 
     for i, device in enumerate(devices):
@@ -90,7 +91,7 @@ def openScoutCamp():
 
 def checkImg(
     img_path: str,
-    touch: bool = True,
+    tap: bool = True,
     infinite: bool = False,
 ):
     timer = 0
@@ -99,7 +100,7 @@ def checkImg(
         result, x, y = aapo.chkImg2(img_path)
 
         if result:
-            if touch:
+            if tap:
                 aapo.sleep(1)
                 aapo.touchPos(x, y)
             break
