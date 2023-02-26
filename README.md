@@ -13,7 +13,7 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
 
 [kiriharashi.exe](https://github.com/iwbc/rok-kiriharashi/releases/download/1.0.0/kiriharashi.exe)
 
-#### NoxPlayer（BlueStacks）とライキンの設定
+#### BlueStacks（NoxPlayer）とライキンの設定
 
 ##### BlueStacks（NoxPlayer）の設定
 
