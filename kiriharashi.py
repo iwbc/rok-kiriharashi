@@ -4,8 +4,8 @@ import os
 import sys
 from android_auto_play_opencv import AapoManager
 
-INCLUDES_DIR_PATH = os.path.join(os.path.dirname(__file__), "includes", "")
-ADB_DIR_PATH = os.path.join(os.path.dirname(__file__), "bin", "")
+INCLUDES_DIR_PATH = os.path.join(os.path.dirname(__file__), "templates", "")
+ADB_DIR_PATH = os.path.join(os.path.dirname(__file__), "libs", "")
 
 # 斥候キャンプタップ位置
 SCOUT_CAMP_TAP_POS = (800, 450)

@@ -47,5 +47,5 @@ Rise of Kingdoms 霧晴らし自動化スクリプト（やっつけ仕事版）
 ### exe化
 
 ```
-nuitka --onefile --standalone --include-data-dir=includes=includes --include-data-files=bin/adb.exe=bin/adb.exe --include-data-files=bin/AdbWinApi.dll=bin/AdbWinApi.dll .\kiriharashi.py
+nuitka --onefile --standalone --include-data-dir=templates=templates --include-data-files=libs/adb.exe=libs/adb.exe --include-data-files=libs/AdbWinApi.dll=libs/AdbWinApi.dll .\kiriharashi.py
 ```
